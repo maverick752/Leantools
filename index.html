@@ -851,15 +851,12 @@
 </body></html>');
       printWindow.document.close();
 
-      // Esperar un poco para que el contenido se cargue antes de imprimir
       printWindow.onload = function() {
         printWindow.print();
       };
     }
 
 
-    // --- Event Listeners ---
-    // Añadido un listener para el evento 'blur' para formatear la demanda
     demandValueInput.addEventListener('blur', (event) => {
         const value = parseFloat(event.target.value.replace(/[,.]/g, '')); // Eliminar comas y puntos para parsear
         if (!isNaN(value)) {
@@ -867,7 +864,6 @@
         }
         calculate(); // Recalcular después de formatear
     });
-    // También formatear al escribir para una mejor experiencia de usuario
     demandValueInput.addEventListener('input', (event) => {
         const caretPos = event.target.selectionStart;
         const oldLength = event.target.value.length;
